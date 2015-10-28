@@ -212,13 +212,20 @@ Y.use([
 
       // Create new gallery for the masonry grid
 
+		if(Y.config.win.innerWidth < 720)
+		{
+			var widthHack = 160;
+		}
+		else {
+			var widthHack = config.width;
+		}
       this.masonry = new Y.Squarespace.Gallery2({
         container: Y.one('.masonry-container'),
         element: Y.all('.masonry-item'),
         design: Y.one('.collection-type-index.index-aspect-ratio-auto') || Y.one('.collection-type-products.product-aspect-ratio-auto') ? 'autocolumns' : 'autogrid',
         designOptions: {
-         // columnWidth: config.width,
-       //   columnWidthBehavior: 'min',
+          columnWidth: widthHack,
+          columnWidthBehavior: 'min',
           gutter: config.gutter,
           aspectRatio: false,
           mixedContent: true
