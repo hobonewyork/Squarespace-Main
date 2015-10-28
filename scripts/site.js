@@ -217,7 +217,7 @@ Y.use([
         element: Y.all('.masonry-item'),
         design: Y.one('.collection-type-index.index-aspect-ratio-auto') || Y.one('.collection-type-products.product-aspect-ratio-auto') ? 'autocolumns' : 'autogrid',
         designOptions: {
-          columnWidth: config.width,
+         // columnWidth: config.width,
         //  columnWidthBehavior: 'min',
           gutter: config.gutter,
           aspectRatio: false,
