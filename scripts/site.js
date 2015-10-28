@@ -218,7 +218,7 @@ Y.use([
         design: Y.one('.collection-type-index.index-aspect-ratio-auto') || Y.one('.collection-type-products.product-aspect-ratio-auto') ? 'autocolumns' : 'autogrid',
         designOptions: {
           columnWidth: config.width,
-          //columnWidthBehavior: 'min',
+          columnWidthBehavior: 'min',
           gutter: config.gutter,
           aspectRatio: false,
           mixedContent: true
@@ -506,7 +506,7 @@ Y.use([
       if ((Y.one('.product-list-style-catalog.collection-type-products') && !Y.one('.product-aspect-ratio-auto')) ||
           (Y.one('.index-list-title-style-under.collection-type-index') && !Y.one('.index-aspect-ratio-auto')))
       {
-        if (Y.config.win.innerWidth > 640) {
+        if (Y.config.win.innerWidth > 1) {
           // Set height
           var max = 0;
           Y.all('.masonry-content').each(function(item){
