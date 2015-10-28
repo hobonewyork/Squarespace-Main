@@ -212,9 +212,10 @@ Y.use([
 
       // Create new gallery for the masonry grid
 
-		if(Y.config.win.innerWidth < 720)
+		//Took me ages to find this. Hacky way to change column widths at different viewport widths.
+		if(Y.config.win.innerWidth < 1720)
 		{
-			var widthHack = 60;
+			var widthHack = 160;
 		}
 		else {
 			var widthHack = config.width;
