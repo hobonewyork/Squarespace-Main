@@ -215,7 +215,7 @@ Y.use([
       this.masonry = new Y.Squarespace.Gallery2({
         container: Y.one('.masonry-container'),
         element: Y.all('.masonry-item'),
-        design: Y.one('.collection-type-index.index-aspect-ratio-auto') || Y.one('.collection-type-products.product-aspect-ratio-auto') ? 'autocolumns' : 'autogrid',
+        //design: Y.one('.collection-type-index.index-aspect-ratio-auto') || Y.one('.collection-type-products.product-aspect-ratio-auto') ? 'autocolumns' : 'autogrid',
         designOptions: {
           columnWidth: config.width,
           columnWidthBehavior: 'min',
