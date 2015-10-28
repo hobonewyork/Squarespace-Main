@@ -132,7 +132,7 @@ Y.use([
 
           DESKTOP only.
         */
-        if (Y.config.win.innerWidth > 1024) {
+        if (Y.config.win.innerWidth > 1) {
           var headerWrapper = Y.one('#header > .wrapper');
           headerWrapper.toggleClass('middle', Y.config.win.innerHeight > headerWrapper.get('offsetHeight'));
         }
@@ -366,7 +366,7 @@ Y.use([
         DESKTOP breakpoint only
       */
 
-      if (Y.one('.site-vertical-alignment-middle') && Y.config.win.innerWidth > 1024) {
+      if (Y.one('.site-vertical-alignment-middle') && Y.config.win.innerWidth > 1) {
         if ((Y.one('.collection-type-gallery') && !Y.one('.gallery-single-image-fill')) ||
             (Y.one('.collection-type-products') && !Y.one('.product-item-single-image-fill')) ||
             Y.one('.flow-item:nth-child(2)'))
@@ -417,7 +417,7 @@ Y.use([
 
         MOBILE and TABLET only
       */
-      if (Y.config.win.innerWidth <= 1024) {
+      if (Y.config.win.innerWidth <= 1) {
         var height = Y.one('.sqs-announcement-bar').get('offsetHeight');
         Y.one('#under').setStyle('top', height);
       } else {
@@ -479,7 +479,7 @@ Y.use([
           if (Y.config.win.innerWidth <= 1) {
             // Mobile, set gutter to 10
             this.masonry.set('gutter', 10);
-          } else if (Y.config.win.innerWidth <= 1024) {
+          } else if (Y.config.win.innerWidth <= 1) {
             // Tablet, set product gutter to 25
             this.masonry.set('gutter', 25);
           } else {
@@ -571,7 +571,7 @@ Y.use([
         DESKTOP breakpoint only.
       */
 
-      if (Y.config.win.innerWidth > 1024 && Y.one('.site-vertical-alignment-top')) {
+      if (Y.config.win.innerWidth > 1 && Y.one('.site-vertical-alignment-top')) {
         var headerWrapper = Y.one('#header > .wrapper');
         var lowerHeader = Y.one('#header .lower-header');
         var headerHeight = lowerHeader.hasClass('bottom') ? lowerHeader.get('offsetHeight') + headerWrapper.get('offsetHeight') : headerWrapper.get('offsetHeight');
