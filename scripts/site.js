@@ -215,7 +215,7 @@ Y.use([
 		//Took me ages to find this. Hacky way to change column widths at different viewport widths.
 		if(Y.config.win.innerWidth < 400)
 		{
-			var widthHack = 160;
+			var widthHack = 140;
 		}
 		else if(Y.config.win.innerWidth < 720)
 		{
