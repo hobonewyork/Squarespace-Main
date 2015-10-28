@@ -218,7 +218,7 @@ Y.use([
         design: Y.one('.collection-type-index.index-aspect-ratio-auto') || Y.one('.collection-type-products.product-aspect-ratio-auto') ? 'autocolumns' : 'autogrid',
         designOptions: {
           columnWidth: 160,
-          columnWidthBehavior: 'min',
+          columnWidthBehavior: 'max',
           gutter: config.gutter,
           aspectRatio: false,
           mixedContent: true
