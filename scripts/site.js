@@ -327,7 +327,7 @@ Y.use([
         TABLET and DESKTOP breakpoint only
       */
 
-      if (Y.config.win.innerWidth > 640) {
+      if (Y.config.win.innerWidth > 1) {
         if (flowContent.get('offsetHeight') > Y.config.win.innerHeight) {
           // flowContent exceeded, clear flowContent style and force top alignment
           flowContent.setAttribute('style', '');
@@ -393,7 +393,7 @@ Y.use([
           Y.all('.flow-item').size() === 1
         ) 
       {
-        if (Y.config.win.innerWidth > 640) {
+        if (Y.config.win.innerWidth > 1) {
           Y.one('body').addClass('flow-items-fill');
           Y.one('.flow-item').addClass('content-fill');
         } else {
@@ -468,7 +468,7 @@ Y.use([
           this.masonry.set('gutter', gutter);
         } else if (gutter < 25) {
           // Gutter is less than 25
-          if (Y.config.win.innerWidth <= 640) {
+          if (Y.config.win.innerWidth <= 1) {
             // Mobile, set gutter to 10
             this.masonry.set('gutter', 10);
           }else{
@@ -476,7 +476,7 @@ Y.use([
             this.masonry.set('gutter', gutter);
           }
         } else {
-          if (Y.config.win.innerWidth <= 640) {
+          if (Y.config.win.innerWidth <= 1) {
             // Mobile, set gutter to 10
             this.masonry.set('gutter', 10);
           } else if (Y.config.win.innerWidth <= 1024) {
@@ -506,7 +506,7 @@ Y.use([
       if ((Y.one('.product-list-style-catalog.collection-type-products') && !Y.one('.product-aspect-ratio-auto')) ||
           (Y.one('.index-list-title-style-under.collection-type-index') && !Y.one('.index-aspect-ratio-auto')))
       {
-        if (Y.config.win.innerWidth > 640) {
+        if (Y.config.win.innerWidth > 1) {
           // Set height
           var max = 0;
           Y.all('.masonry-content').each(function(item){
