@@ -36,7 +36,7 @@ Y.use([
 
       if (Y.one('#main .masonry-item')) {
         this._initMasonry({
-          width: Y.one('.collection-type-index') ? parseInt(Y.Squarespace.Template.getTweakValue('indexColumnWid2h'), 10) : parseInt(Y.Squarespace.Template.getTweakValue('productColumnWid2h'), 10),
+          width: Y.one('.collection-type-index') ? parseInt(Y.Squarespace.Template.getTweakValue('indexColumnWidth'), 10) : parseInt(Y.Squarespace.Template.getTweakValue('productColumnWidth'), 10),
           gutter: Y.one('.collection-type-index') ? parseInt(Y.Squarespace.Template.getTweakValue('indexGutter'), 10) : parseInt(Y.Squarespace.Template.getTweakValue('productGutter'), 10)
         });
       }
@@ -132,7 +132,7 @@ Y.use([
 
           DESKTOP only.
         */
-        if (Y.config.win.innerWid2h > 1024) {
+        if (Y.config.win.innerWidth > 1024) {
           var headerWrapper = Y.one('#header > .wrapper');
           headerWrapper.toggleClass('middle', Y.config.win.innerHeight > headerWrapper.get('offsetHeight'));
         }
@@ -217,8 +217,8 @@ Y.use([
         element: Y.all('.masonry-item'),
         design: Y.one('.collection-type-index.index-aspect-ratio-auto') || Y.one('.collection-type-products.product-aspect-ratio-auto') ? 'autocolumns' : 'autogrid',
         designOptions: {
-          //columnWid2h: config.width,
-        //  columnWid2hBehavior: 'min',
+          //columnWidth: config.width,
+        //  columnWidthBehavior: 'min',
           gutter: config.gutter,
           aspectRatio: false,
           mixedContent: true
@@ -327,7 +327,7 @@ Y.use([
         TABLET and DESKTOP breakpoint only
       */
 
-      if (Y.config.win.innerWid2h > 640) {
+      if (Y.config.win.innerWidth > 640) {
         if (flowContent.get('offsetHeight') > Y.config.win.innerHeight) {
           // flowContent exceeded, clear flowContent style and force top alignment
           flowContent.setAttribute('style', '');
@@ -366,7 +366,7 @@ Y.use([
         DESKTOP breakpoint only
       */
 
-      if (Y.one('.site-vertical-alignment-middle') && Y.config.win.innerWid2h > 1024) {
+      if (Y.one('.site-vertical-alignment-middle') && Y.config.win.innerWidth > 1024) {
         if ((Y.one('.collection-type-gallery') && !Y.one('.gallery-single-image-fill')) ||
             (Y.one('.collection-type-products') && !Y.one('.product-item-single-image-fill')) ||
             Y.one('.flow-item:nth-child(2)'))
@@ -393,7 +393,7 @@ Y.use([
           Y.all('.flow-item').size() === 1
         ) 
       {
-        if (Y.config.win.innerWid2h > 640) {
+        if (Y.config.win.innerWidth > 640) {
           Y.one('body').addClass('flow-items-fill');
           Y.one('.flow-item').addClass('content-fill');
         } else {
@@ -417,7 +417,7 @@ Y.use([
 
         MOBILE and TABLET only
       */
-      if (Y.config.win.innerWid2h <= 1024) {
+      if (Y.config.win.innerWidth <= 1024) {
         var height = Y.one('.sqs-announcement-bar').get('offsetHeight');
         Y.one('#under').setStyle('top', height);
       } else {
@@ -468,7 +468,7 @@ Y.use([
           this.masonry.set('gutter', gutter);
         } else if (gutter < 25) {
           // Gutter is less than 25
-          if (Y.config.win.innerWid2h <= 640) {
+          if (Y.config.win.innerWidth <= 640) {
             // Mobile, set gutter to 10
             this.masonry.set('gutter', 10);
           }else{
@@ -476,10 +476,10 @@ Y.use([
             this.masonry.set('gutter', gutter);
           }
         } else {
-          if (Y.config.win.innerWid2h <= 640) {
+          if (Y.config.win.innerWidth <= 640) {
             // Mobile, set gutter to 10
             this.masonry.set('gutter', 10);
-          } else if (Y.config.win.innerWid2h <= 1024) {
+          } else if (Y.config.win.innerWidth <= 1024) {
             // Tablet, set product gutter to 25
             this.masonry.set('gutter', 25);
           } else {
@@ -506,7 +506,7 @@ Y.use([
       if ((Y.one('.product-list-style-catalog.collection-type-products') && !Y.one('.product-aspect-ratio-auto')) ||
           (Y.one('.index-list-title-style-under.collection-type-index') && !Y.one('.index-aspect-ratio-auto')))
       {
-        if (Y.config.win.innerWid2h > 640) {
+        if (Y.config.win.innerWidth > 640) {
           // Set height
           var max = 0;
           Y.all('.masonry-content').each(function(item){
@@ -571,7 +571,7 @@ Y.use([
         DESKTOP breakpoint only.
       */
 
-      if (Y.config.win.innerWid2h > 1024 && Y.one('.site-vertical-alignment-top')) {
+      if (Y.config.win.innerWidth > 1024 && Y.one('.site-vertical-alignment-top')) {
         var headerWrapper = Y.one('#header > .wrapper');
         var lowerHeader = Y.one('#header .lower-header');
         var headerHeight = lowerHeader.hasClass('bottom') ? lowerHeader.get('offsetHeight') + headerWrapper.get('offsetHeight') : headerWrapper.get('offsetHeight');
