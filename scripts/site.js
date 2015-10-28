@@ -213,6 +213,7 @@ Y.use([
       // Create new gallery for the masonry grid
 
 		//Took me ages to find this. Hacky way to change column widths at different viewport widths.
+		//Goes up to iPhone 6 Plus size, 414px and a little extra for luck
 		if(Y.config.win.innerWidth < 450)
 		{
 			var widthHack = 140;
@@ -221,6 +222,7 @@ Y.use([
 		{
 			var widthHack = 300;
 		}
+		//looks normal at non-tablet widths
 		else {
 			var widthHack = config.width;
 		}
