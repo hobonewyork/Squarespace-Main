@@ -216,7 +216,7 @@ Y.use([
 		//Goes up to iPhone 6 Plus size, 414px and a little extra for luck
 		if(Y.config.win.innerWidth < 450)
 		{
-			var widthHack = 140;
+			var widthHack = 150;
 		}
 		else if(Y.config.win.innerWidth < 720)
 		{
