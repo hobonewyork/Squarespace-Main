@@ -217,7 +217,7 @@ Y.use([
 			var widthHack = 160;
 		}
 		else {
-			var widthHack = 160;
+			var widthHack = config.width;
 		}
       this.masonry = new Y.Squarespace.Gallery2({
         container: Y.one('.masonry-container'),
@@ -225,7 +225,7 @@ Y.use([
         design: Y.one('.collection-type-index.index-aspect-ratio-auto') || Y.one('.collection-type-products.product-aspect-ratio-auto') ? 'autocolumns' : 'autogrid',
         designOptions: {
           columnWidth: widthHack,
-       //   columnWidthBehavior: 'min',
+          columnWidthBehavior: 'min',
           gutter: config.gutter,
           aspectRatio: false,
           mixedContent: true
