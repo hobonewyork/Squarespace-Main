@@ -214,7 +214,7 @@ Y.use([
 
 		if(Y.config.win.innerWidth < 720)
 		{
-			var widthHack = 160;
+			var widthHack = 60;
 		}
 		else {
 			var widthHack = config.width;
