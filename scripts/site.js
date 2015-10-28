@@ -219,10 +219,11 @@ Y.use([
 			var widthHack = 150;
 		}
 		//broken from 450px to 500px in width -> shows full width image rather than two side-by-side
-		else if(Y.config.win.innerWidth < 720)
+		else if(Y.config.win.innerWidth < 770)
 		{
 			var widthHack = 240;
 		}
+		//broken from 720 to 770px
 		//looks normal at non-tablet widths
 		else {
 			var widthHack = config.width;
