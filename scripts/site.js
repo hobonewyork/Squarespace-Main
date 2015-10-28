@@ -218,9 +218,10 @@ Y.use([
 		{
 			var widthHack = 150;
 		}
+		//broken from 450px to 620px in width -> shows full width image rather than 
 		else if(Y.config.win.innerWidth < 720)
 		{
-			var widthHack = 300;
+			var widthHack = 240;
 		}
 		//looks normal at non-tablet widths
 		else {
