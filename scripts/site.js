@@ -36,7 +36,7 @@ Y.use([
 
       if (Y.one('#main .masonry-item')) {
         this._initMasonry({
-          width: Y.one('.collection-type-index') ? parseInt(Y.Squarespace.Template.getTweakValue('indexColumnWidth'), 10) : parseInt(Y.Squarespace.Template.getTweakValue('productColumnWidth'), 10),
+        //  width: Y.one('.collection-type-index') ? parseInt(Y.Squarespace.Template.getTweakValue('indexColumnWidth'), 10) : parseInt(Y.Squarespace.Template.getTweakValue('productColumnWidth'), 10),
           gutter: Y.one('.collection-type-index') ? parseInt(Y.Squarespace.Template.getTweakValue('indexGutter'), 10) : parseInt(Y.Squarespace.Template.getTweakValue('productGutter'), 10)
         });
       }
