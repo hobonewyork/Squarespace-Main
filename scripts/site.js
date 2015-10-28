@@ -208,7 +208,174 @@ Y.use([
 
     },
 
-    _in
+    _initMasonry: function (config) {
+
+      // Create new gallery for the masonry grid
+
+      this.masonry = new Y.Squarespace.Gallery2({
+        container: Y.one('.masonry-container'),
+        element: Y.all('.masonry-item'),
+        design: Y.one('.collection-type-index.index-aspect-ratio-auto') || Y.one('.collection-type-products.product-aspect-ratio-auto') ? 'autocolumns' : 'autogrid',
+        designOptions: {
+          columnWidth: config.width,
+          columnWidthBehavior: 'min',
+          gutter: config.gutter,
+          aspectRatio: false,
+          mixedContent: true
+        },
+        loaderOptions: { load: false },
+        lazyLoad: false,
+        refreshOnResize: true
+      });
+
+    },
+
+    _bindProducts: function () {
+
+      /*
+        Bind the click handler for the flowBody
+        open and close buttons. flowBody contains
+        the "Additional Info" for each product item
+      */
+
+      if (Y.one('#flowBody')) {
+        Y.one('#flowBodyOpen').on('click', function (e) {
+          e.preventDefault();
+          Y.one('body').addClass('flow-body-active');
+        });
+        Y.one('#flowBodyClose').on('click', function (e) {
+          e.preventDefault();
+          Y.one('body').removeClass('flow-body-active');
+        });
+      }
+
+    },
+
+    _bindGallery: function () {
+
+      /*
+        Bind the click handler for flow-item-info,
+        the title/description for each picture in
+        the gallery.
+      */
+
+      if (Y.one('#flowItems .flow-item-info')) {
+        Y.one('#flowItems').delegate('click', function (e) {
+          e.preventDefault();
+          this.ancestor('.flow-item').toggleClass('active').siblings().removeClass('active');
+        }, '.flow-item.has-info .button-expand');
+      }
+
+    },
+
+    _syncMasonry: function () {
+
+      // Set masonry content height
+      this._setContentHeight();
+
+
+      /*
+        If the aspect ratio is not set to "auto",
+        set the content mode for the masonry gallery
+        to fill, so images will fill whatever aspect
+        ratio is selected (aspect ratio is set in CSS).
+      */
+
+
+      var prefix = 'product';
+      if (Y.one('.collection-type-index')) {
+        prefix = 'index';
+      }
+      if (Y.one('.' + prefix + '-aspect-ratio-auto')) {
+        this.masonry.refreshContentMode(null);
+      } else {
+        this.masonry.refreshContentMode('fill')
+      }
+
+    },
+
+    _syncIndex: function () {
+
+      // Set gutter for index
+      this._setGutter(parseInt(Y.Squarespace.Template.getTweakValue('indexGutter'), 10));
+
+    },
+
+    _syncProducts: function () {
+
+      if (Y.one('.view-list')) {
+
+        // Set gutter for products
+        this._setGutter(parseInt(Y.Squarespace.Template.getTweakValue('productGutter'), 10));
+
+      }
+
+    },
+
+    _syncFlow: function () {
+
+      var flowItems = Y.one('#flowItems');
+      var flowContent = Y.one('#flowContent');
+      var flowItemsHeightExceeded = this._predictFlowItemsHeight();
+
+
+      /*
+        Determine whether flowItems or flowContent
+        should be fixed, depending on whether each
+        overflows the viewport height
+
+        TABLET and DESKTOP breakpoint only
+      */
+
+      if (Y.config.win.innerWidth > 640) {
+        if (flowContent.get('offsetHeight') > Y.config.win.innerHeight) {
+          // flowContent exceeded, clear flowContent style and force top alignment
+          flowContent.setAttribute('style', '');
+          Y.one('body').addClass('force-vertical-alignment-top');
+          if (flowItemsHeightExceeded) {
+            // Both exceeded, clear flowItems style
+            flowItems.setAttribute('style', '');
+          } else {
+            // flowItems not exceeded, set flowItems to fixed
+            flowItems.setStyle('position', 'fixed');
+          }
+        } else {
+          // flowContent not exceeded, allow middle alignment
+          Y.one('body').removeClass('force-vertical-alignment-top');
+          if (flowItemsHeightExceeded) {
+            // flowItems exceeded, set flowContent to fixed
+            flowContent.setStyle('position', 'fixed');
+            flowItems.setAttribute('style', '');
+          } else {
+            // Both not exceeded, do nothing since you can't scroll
+          }
+        }
+      } else {
+        // Mobile, clear both styles
+        Y.one('body').removeClass('force-vertical-alignment-top');
+        flowItems.setAttribute('style', '');
+        flowContent.setAttribute('style', '');
+      }
+
+
+      /*
+        When vertical alignment is set to middle,
+        set flowItems to align to middle, if there
+        is enough room.
+
+        DESKTOP breakpoint only
+      */
+
+      if (Y.one('.site-vertical-alignment-middle') && Y.config.win.innerWidth > 1024) {
+        if ((Y.one('.collection-type-gallery') && !Y.one('.gallery-single-image-fill')) ||
+            (Y.one('.collection-type-products') && !Y.one('.product-item-single-image-fill')) ||
+            Y.one('.flow-item:nth-child(2)'))
+        {
+          // Toggle middle class based on whether flowItems height is greater than viewport height
+          flowItems.toggleClass('middle', !flowItemsHeightExceeded);
+        }
+      } else {
+        // Tablet or mobile, remove middle class
         flowItems.removeClass('middle');
       }
 
